@@ -8,8 +8,55 @@
 
 import Foundation
 
-// TODO: remove these lines after you have added the Suit and FaceCard enums as per the assessment README
-print("There are \(Card.newDeck(aceValue: 1).count) in a deck of cards")
+
+//print("There are \(Card.newDeck(aceValue: 1).count) in a deck of cards")
 // There are 52 in a deck of cards
 
-// pushing to gitHub 
+let game = Game()
+var gameOver = false
+var hitAgain = true
+
+print("""
+┬ ┬┌─┐┬  ┌─┐┌─┐┌┬┐┌─┐  ┌┬┐┌─┐  ┌┐ ┬  ┌─┐┌─┐┬┌─ ┬┌─┐┌─┐┬┌─
+│││├┤ │  │  │ ││││├┤    │ │ │  ├┴┐│  ├─┤│  ├┴┐ │├─┤│  ├┴┐
+└┴┘└─┘┴─┘└─┘└─┘┴ ┴└─┘   ┴ └─┘  └─┘┴─┘┴ ┴└─┘┴ ┴└┘┴ ┴└─┘┴ ┴
+""")
+print()
+
+//print("Whats your name?")
+//
+//let userName = readLine()?.lowercased() ?? "no name"
+//
+//print("\(userName) welcome to blackjack")
+//print()
+
+repeat {
+    
+    repeat {
+        
+        print("Do you want to hit or pass? Type (hit or pass)")
+        
+        var userChoice = readLine()?.lowercased() ?? ""
+        
+        game.hitpass(userChoice)
+        
+        
+    } while hitAgain == true
+    
+
+    
+    print("want to play again? Yes or no")
+    let userContinue = readLine() ?? ""
+    
+    if userContinue == "yes" {
+        game.newGame()
+        gameOver = false
+    } else {
+        print("bye")
+        gameOver = false
+    }
+    
+} while gameOver == false
+
+
+
