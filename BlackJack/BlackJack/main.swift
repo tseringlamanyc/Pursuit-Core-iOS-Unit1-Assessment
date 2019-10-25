@@ -23,6 +23,8 @@ print("""
 """)
 print()
 
+game.newGame()
+
 repeat {
     
     repeat {

@@ -28,7 +28,7 @@ class Game {
     }
     
     func newGame() {
-        deck = deck.shuffled()
+        deck = Card.newDeck(aceValue: 1).shuffled()
         player.cards.removeAll()
         player.score = 0 
         computerNum = 0
@@ -37,7 +37,8 @@ class Game {
     func hitpass (_ userChoice: String) {
         if userChoice == "hit" {
             hitAgain = true
-            var card = Card.newDeck(aceValue: 1).randomElement() ?? Card(suit: .diamond, value: 4, isFaceCard: false, face: .jack)
+    
+            let card = deck.popLast() ?? Card(suit: .diamond, value: 4, isFaceCard: false, face: .jack)
             print()
             player.cards.append(card.stringify())
             
