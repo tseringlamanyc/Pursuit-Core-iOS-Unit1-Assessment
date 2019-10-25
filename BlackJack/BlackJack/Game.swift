@@ -41,16 +41,16 @@ class Game {
             print()
             player.cards.append(card.stringify())
             
-            let stringCard = player.cards.joined(separator: "")
+            let stringCard = player.cards.joined(separator: " ")
             
             print(stringCard)
             
             player.score += card.value
-            print("Score:\(player.score)")
+            print("Your current score is: \(player.score)")
             
             if player.score == 21 {
                 hitAgain = false
-                 print("You won, blackjack!!!! ♠️🥳")
+                print("You won, blackjack!!!! ♠️🥳")
             } else {
                 if player.score > 21 {
                     hitAgain = false
@@ -62,28 +62,28 @@ class Game {
                 hitAgain = false
                 computerNum = randomComputerScore
                 print()
-                print("The computer score is \(computerNum) and your score is \(player.score)")
+                print("The computer's score is \(computerNum) and your score is \(player.score)")
             }
         }
     }
     
     func computerVsPerson() {
-            if player.score < computerNum && computerNum != 0 {
+        if player.score < computerNum && computerNum != 0 {
+            hitAgain = false
+            print("You lost 😆😆🤣, better luck next time.")
+        } else {
+            if player.score > computerNum && computerNum != 0 {
                 hitAgain = false
-                print("You lost 😆😆🤣")
+                print("You won 🤩🤩🤩🤩🤩, congratulations on beating the cumputer.")
             } else {
-                if player.score > computerNum && computerNum != 0 {
+                if player.score == computerNum {
                     hitAgain = false
-                    print("you won 🤩🤩🤩🤩🤩")
-                } else {
-                    if player.score == computerNum {
-                        hitAgain = false
-                        print("its a tie 😦😦😦😦😦")
-                    }
+                    print("Its a tie 😦😦😦😦😦.")
                 }
             }
         }
     }
+}
 
 
 
