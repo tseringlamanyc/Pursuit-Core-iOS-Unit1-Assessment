@@ -22,8 +22,14 @@ class Game {
     }
     
     
+    func shuffledDeck () -> Card? {
+        deck = deck.shuffled()
+        return deck.popLast()
+    }
+    
     func newGame() {
-        Card.newDeck(aceValue: 1)
+        deck = deck.shuffled()
+        player.cards.removeAll()
         player.score = 0 
         computerNum = 0
     }
@@ -32,44 +38,53 @@ class Game {
         if userChoice == "hit" {
             hitAgain = true
             var card = Card.newDeck(aceValue: 1).randomElement() ?? Card(suit: .diamond, value: 4, isFaceCard: false, face: .jack)
-           print(card.stringify())
+            print()
             player.cards.append(card.stringify())
-            print(player.cards)
+            
+            let stringCard = player.cards.joined(separator: "")
+            
+            print(stringCard)
+            
             player.score += card.value
             print("Score:\(player.score)")
+            
             if player.score == 21 {
                 hitAgain = false
-                print("You won!!!!")
+                 print("You won, blackjack!!!! ♠️🥳")
             } else {
                 if player.score > 21 {
                     hitAgain = false
-                    print("BUST")
+                    print("BUST 😢😅🤪")
                 }
             }
         } else {
             if userChoice == "pass" {
                 hitAgain = false
                 computerNum = randomComputerScore
+                print()
                 print("The computer score is \(computerNum) and your score is \(player.score)")
             }
         }
     }
-//
-//    func computerVsPerson() {
-//        if player.score == 21 {
-//            hitAgain = false
-//            print("You won, blackjack")
-//        } else {
-//            if player.score < computerNum {
-//                print("You lost")
-//            } else {
-//                if player.score > computerNum {
-//                    print("you won")
-//                }
-//            }
-//        }
-//    }
-}
+    
+    func computerVsPerson() {
+            if player.score < computerNum && computerNum != 0 {
+                hitAgain = false
+                print("You lost 😆😆🤣")
+            } else {
+                if player.score > computerNum && computerNum != 0 {
+                    hitAgain = false
+                    print("you won 🤩🤩🤩🤩🤩")
+                } else {
+                    if player.score == computerNum {
+                        hitAgain = false
+                        print("its a tie 😦😦😦😦😦")
+                    }
+                }
+            }
+        }
+    }
+
 
 
 

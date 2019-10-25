@@ -23,17 +23,10 @@ print("""
 """)
 print()
 
-//print("Whats your name?")
-//
-//let userName = readLine()?.lowercased() ?? "no name"
-//
-//print("\(userName) welcome to blackjack")
-//print()
-
 repeat {
     
     repeat {
-        
+        print()
         print("Do you want to hit or pass? Type (hit or pass)")
         
         var userChoice = readLine()?.lowercased() ?? ""
@@ -43,17 +36,19 @@ repeat {
         
     } while hitAgain == true
     
-
+    game.computerVsPerson()
     
-    print("want to play again? Yes or no")
+    print()
+    print("Do you want to play again? Please type Yes or no")
     let userContinue = readLine() ?? ""
     
     if userContinue == "yes" {
         game.newGame()
         gameOver = false
     } else {
-        print("bye")
-        gameOver = false
+        print()
+        print("Bye, thank you for trying out my blackjack game.")
+        gameOver = true
     }
     
 } while gameOver == false
